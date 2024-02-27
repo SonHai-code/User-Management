@@ -2,9 +2,10 @@ package sonhai.project.backendems.service;
 
 import sonhai.project.backendems.dto.EmployeeDto;
 
-public interface EmployeeService {
-    /* Create new employee */
-    EmployeeDto createEmployee(EmployeeDto employeeDto);
+import java.util.List;
 
+public interface EmployeeService {
+    EmployeeDto createEmployee(EmployeeDto employeeDto);
     EmployeeDto getEmployeeById(Long employeeId);
+    List<EmployeeDto> getAllEmployees();
 }

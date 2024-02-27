@@ -9,9 +9,11 @@ import sonhai.project.backendems.mapper.EmployeeMapper;
 import sonhai.project.backendems.repository.EmployeeRepository;
 import sonhai.project.backendems.service.EmployeeService;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @AllArgsConstructor
-
 public class EmployeeServiceImpl implements EmployeeService {
 
     private EmployeeRepository employeeRepository;
@@ -28,5 +30,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employee = employeeRepository.findById(employeeId)
                                 .orElseThrow(()-> new ResourceNotFoundException("Cannot found the employee with the id : " + employeeId));
         return EmployeeMapper.mapToEmployeeDto(employee);
+    }
+
+    @Override
+    public List<EmployeeDto> getAllEmployees() {
+        List<Employee> employees = employeeRepository.findAll();
+        return employees.stream().map(employee -> EmployeeMapper.mapToEmployeeDto(employee))
+                        .collect(Collectors.toList());
     }
 }
