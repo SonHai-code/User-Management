@@ -11,6 +11,7 @@ import sonhai.project.backendems.service.EmployeeService;
 
 import java.util.List;
 
+@CrossOrigin("*")
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/employees")
