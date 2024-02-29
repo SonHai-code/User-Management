@@ -7,6 +7,7 @@ const ListEmployeeComponent = () => {
 
     const nagivator = useNavigate();
 
+    // useEffect run everytime the state was changed
     useEffect(()=>{
         listEmployees().then(response => {
             setEmployees(response.data);
