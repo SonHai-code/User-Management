@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import { deleteEmployee, listEmployees } from "../services/EmployeeService";
 import { useNavigate } from "react-router-dom";
 
+/**
+ *  Render the list of all employees.
+ *
+ */
 const ListEmployeeComponent = () => {
   const [employees, setEmployees] = useState([]);
 

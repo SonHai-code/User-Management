@@ -1,3 +1,6 @@
+/**
+ * Footer
+ */
 const FooterComponent = () => {
   return (
     <div>
@@ -5,7 +8,7 @@ const FooterComponent = () => {
         <span>All copy rights reversed by sonhai.</span>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default FooterComponent
+export default FooterComponent;
