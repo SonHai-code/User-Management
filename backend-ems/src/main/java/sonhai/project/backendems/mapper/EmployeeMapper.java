@@ -25,7 +25,8 @@ public class EmployeeMapper {
                             employee.getTimeKeeping(),
                             employee.getRole(),
                             employee.getCameras(),
-                            employee.getImages());
+                            employee.getImages(),
+                            employee.getCheckInLogs());
     }
 
     public static Employee maptoEmployee(EmployeeDto employeeDto) {
@@ -42,6 +43,7 @@ public class EmployeeMapper {
                         employeeDto.getTimeKeeping(),
                         employeeDto.getRole(),
                         employeeDto.getCameras(),
-                        employeeDto.getImages());
+                        employeeDto.getImages(),
+                        employeeDto.getCheckInLogs());
     }
 }

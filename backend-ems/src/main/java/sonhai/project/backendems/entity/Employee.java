@@ -66,4 +66,9 @@ public class Employee {
 
     private List<String> images;
 
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    private List<CheckInLog> checkInLogs;
+
 }

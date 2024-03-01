@@ -41,6 +41,4 @@ public class TimeKeeping {
     @ToString.Exclude
     private List<Employee> employees;
 
-
-
 }

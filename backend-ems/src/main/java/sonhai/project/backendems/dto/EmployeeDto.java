@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 import sonhai.project.backendems.entity.Camera;
+import sonhai.project.backendems.entity.CheckInLog;
 import sonhai.project.backendems.entity.Department;
 import sonhai.project.backendems.entity.TimeKeeping;
 
@@ -28,4 +29,5 @@ public class EmployeeDto {
     private String role;
     private List<Camera> cameras;
     private List<String> images;
+    private List<CheckInLog> checkInLogs;
 }
