@@ -25,4 +25,5 @@ public class EmployeeDto {
     private Department department;
     private String role;
     private List<Camera> cameras;
+    private List<String> images;
 }

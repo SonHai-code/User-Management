@@ -20,10 +20,14 @@ public class Camera {
 
     private String location;
 
-    private List<String> images;
+    private List<String> imagesSource;
 
     @ManyToMany(mappedBy = "cameras")
     @EqualsAndHashCode.Exclude
     private List<Employee> employees;
+
+    @ManyToMany(mappedBy = "cameras")
+    @EqualsAndHashCode.Exclude
+    private List<Guess> guesses;
 
 }

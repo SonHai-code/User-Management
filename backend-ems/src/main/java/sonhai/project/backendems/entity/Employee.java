@@ -54,8 +54,10 @@ public class Employee {
     @ToString.Exclude
     @JoinTable(name = "employee_camera",
     joinColumns = @JoinColumn(name = "employee_id"),
-            inverseJoinColumns = @JoinColumn(name = "camera_")
+            inverseJoinColumns = @JoinColumn(name = "camera_id")
     )
     private List<Camera> cameras;
+
+    private List<String> images;
 
 }
