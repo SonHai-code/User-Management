@@ -22,7 +22,8 @@ public class EmployeeMapper {
                             employee.getAddress(),
                             employee.getPhoneNumber(),
                             employee.getDepartment(),
-                            employee.getRole());
+                            employee.getRole(),
+                            employee.getCameras());
     }
 
     public static Employee maptoEmployee(EmployeeDto employeeDto) {
@@ -36,6 +37,7 @@ public class EmployeeMapper {
                         employeeDto.getAddress(),
                         employeeDto.getPhoneNumber(),
                         employeeDto.getDepartment(),
-                        employeeDto.getRole());
+                        employeeDto.getRole(),
+                        employeeDto.getCameras());
     }
 }

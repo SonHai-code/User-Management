@@ -5,7 +5,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
+import sonhai.project.backendems.entity.Camera;
 import sonhai.project.backendems.entity.Department;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -21,4 +24,5 @@ public class EmployeeDto {
     private String phoneNumber;
     private Department department;
     private String role;
+    private List<Camera> cameras;
 }
