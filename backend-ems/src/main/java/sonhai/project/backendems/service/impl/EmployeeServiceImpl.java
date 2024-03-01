@@ -50,12 +50,32 @@ public class EmployeeServiceImpl implements EmployeeService {
             employee.setFirstName(updatingEmployee.getFirstName());
         }
 
+        if (!updatingEmployee.getMiddleName().isEmpty()) {
+            employee.setMiddleName(updatingEmployee.getMiddleName());
+        }
+
         if (!updatingEmployee.getLastName().isEmpty()) {
             employee.setLastName(updatingEmployee.getLastName());
         }
 
         if (!updatingEmployee.getEmail().isEmpty()) {
             employee.setEmail(updatingEmployee.getEmail());
+        }
+
+        if (!updatingEmployee.getGender().isEmpty()) {
+            employee.setGender(updatingEmployee.getGender());
+        }
+
+        if (!updatingEmployee.getDob().isEmpty()) {
+            employee.setDob(updatingEmployee.getDob());
+        }
+
+        if (!updatingEmployee.getAddress().isEmpty()) {
+            employee.setAddress(updatingEmployee.getAddress());
+        }
+
+        if (!updatingEmployee.getPhoneNumber().isEmpty()) {
+            employee.setPhoneNumber(updatingEmployee.getPhoneNumber());
         }
 
         /* Saving the employee to the database */

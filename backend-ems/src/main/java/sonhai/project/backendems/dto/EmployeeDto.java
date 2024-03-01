@@ -1,18 +1,24 @@
 package sonhai.project.backendems.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.*;
+import sonhai.project.backendems.entity.Department;
 
-@Setter
-@Getter
+@Data
 @AllArgsConstructor
-@NoArgsConstructor
-
 public class EmployeeDto {
     private Long id;
     private String firstName;
+    private String middleName;
     private String lastName;
     private String email;
+    private String gender;
+    private String dob;
+    private String address;
+    private String phoneNumber;
+    private Department department;
+    private String role;
 }

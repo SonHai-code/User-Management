@@ -14,17 +14,28 @@ public class EmployeeMapper {
     public static EmployeeDto mapToEmployeeDto(Employee employee){
         return new EmployeeDto(employee.getId(),
                             employee.getFirstName(),
+                            employee.getMiddleName(),
                             employee.getLastName(),
-                            employee.getEmail());
+                            employee.getEmail(),
+                            employee.getGender(),
+                            employee.getDob(),
+                            employee.getAddress(),
+                            employee.getPhoneNumber(),
+                            employee.getDepartment(),
+                            employee.getRole());
     }
 
     public static Employee maptoEmployee(EmployeeDto employeeDto) {
         return new Employee(employeeDto.getId(),
                         employeeDto.getFirstName(),
+                        employeeDto.getMiddleName(),
                         employeeDto.getLastName(),
-                        employeeDto.getEmail());
+                        employeeDto.getEmail(),
+                        employeeDto.getGender(),
+                        employeeDto.getDob(),
+                        employeeDto.getAddress(),
+                        employeeDto.getPhoneNumber(),
+                        employeeDto.getDepartment(),
+                        employeeDto.getRole());
     }
-
-
-
 }
