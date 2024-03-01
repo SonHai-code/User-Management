@@ -22,6 +22,7 @@ public class EmployeeMapper {
                             employee.getAddress(),
                             employee.getPhoneNumber(),
                             employee.getDepartment(),
+                            employee.getTimeKeeping(),
                             employee.getRole(),
                             employee.getCameras(),
                             employee.getImages());
@@ -38,6 +39,7 @@ public class EmployeeMapper {
                         employeeDto.getAddress(),
                         employeeDto.getPhoneNumber(),
                         employeeDto.getDepartment(),
+                        employeeDto.getTimeKeeping(),
                         employeeDto.getRole(),
                         employeeDto.getCameras(),
                         employeeDto.getImages());

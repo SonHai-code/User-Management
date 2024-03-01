@@ -43,6 +43,12 @@ public class Employee {
     @ToString.Exclude
     private Department department;
 
+    @ManyToOne
+    @JoinColumn(name = "timeKeeping_id") // Foreign Key "department_id"
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    private TimeKeeping timeKeeping;
+
     @Transient
     public boolean isManager() {
         return department != null && department.getManager() == this;

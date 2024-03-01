@@ -32,4 +32,6 @@ public class Guess {
     joinColumns = @JoinColumn(name = "guess_id"),
     inverseJoinColumns = @JoinColumn(name = "camera_id"))
     private List<Camera> cameras;
+
+
 }

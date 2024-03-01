@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import lombok.*;
 import sonhai.project.backendems.entity.Camera;
 import sonhai.project.backendems.entity.Department;
+import sonhai.project.backendems.entity.TimeKeeping;
 
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class EmployeeDto {
     private String address;
     private String phoneNumber;
     private Department department;
+    private TimeKeeping timeKeeping;
     private String role;
     private List<Camera> cameras;
     private List<String> images;
