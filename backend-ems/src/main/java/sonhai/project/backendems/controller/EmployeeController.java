@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sonhai.project.backendems.dto.EmployeeDto;
-import sonhai.project.backendems.entity.Employee;
 import sonhai.project.backendems.service.EmployeeService;
 
 import java.util.List;

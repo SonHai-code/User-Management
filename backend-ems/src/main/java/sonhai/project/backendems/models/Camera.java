@@ -1,4 +1,4 @@
-package sonhai.project.backendems.entity;
+package sonhai.project.backendems.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

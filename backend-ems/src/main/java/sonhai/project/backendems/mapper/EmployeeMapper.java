@@ -1,7 +1,7 @@
 package sonhai.project.backendems.mapper;
 
 import sonhai.project.backendems.dto.EmployeeDto;
-import sonhai.project.backendems.entity.Employee;
+import sonhai.project.backendems.models.Employee;
 
 /**
  *

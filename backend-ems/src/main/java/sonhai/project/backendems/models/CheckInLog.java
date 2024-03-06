@@ -1,12 +1,10 @@
-package sonhai.project.backendems.entity;
+package sonhai.project.backendems.models;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.property.access.internal.PropertyAccessStrategyNoopImpl;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.List;
 
 @Data
 @AllArgsConstructor

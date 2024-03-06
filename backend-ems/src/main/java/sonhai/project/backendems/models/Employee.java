@@ -1,4 +1,4 @@
-package sonhai.project.backendems.entity;
+package sonhai.project.backendems.models;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -7,6 +7,7 @@ import java.util.List;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "employees")
 public class Employee {

@@ -3,7 +3,7 @@ package sonhai.project.backendems.service.impl;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import sonhai.project.backendems.dto.EmployeeDto;
-import sonhai.project.backendems.entity.Employee;
+import sonhai.project.backendems.models.Employee;
 import sonhai.project.backendems.exception.ResourceNotFoundException;
 import sonhai.project.backendems.mapper.EmployeeMapper;
 import sonhai.project.backendems.repository.EmployeeRepository;
