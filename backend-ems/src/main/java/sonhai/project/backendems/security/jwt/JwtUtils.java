@@ -9,12 +9,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Component;
 import sonhai.project.backendems.security.services.UserDetailsImpl;
 
 import java.security.Key;
 import java.util.Base64;
 import java.util.Date;
-
+@Component
 public class JwtUtils {
 
     /* Used for recording events and information about the program's execution */

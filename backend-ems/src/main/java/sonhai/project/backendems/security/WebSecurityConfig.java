@@ -14,12 +14,16 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import sonhai.project.backendems.security.jwt.AuthEntryPointJwt;
+import sonhai.project.backendems.security.jwt.AuthTokenFilter;
 import sonhai.project.backendems.security.services.UserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig{
-    /* Interface that load user by username and return UserDetails Object */
+    /**
+     * Interface that load user by username and return UserDetails Object
+     * */
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
 

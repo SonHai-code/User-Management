@@ -6,5 +6,5 @@ import sonhai.project.backendems.models.Role;
 import java.util.Optional;
 
 public interface RoleRepository extends JpaRepository<Role, Long> {
-    Optional<Role> findbyName(ERole name);
+    Optional<Role> findByName(ERole name);
 }
