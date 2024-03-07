@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -19,13 +20,12 @@ import sonhai.project.backendems.security.jwt.AuthTokenFilter;
 import sonhai.project.backendems.security.services.UserDetailsServiceImpl;
 
 @Configuration
-@EnableWebSecurity
-public class WebSecurityConfig{
-    /**
-     * Interface that load user by username and return UserDetails Object
-     * */
+@EnableMethodSecurity(securedEnabled = true, jsr250Enabled = true, prePostEnabled = true)
+
+public class WebSecurityConfig {
+    /* Interface that load user by username and return UserDetails Object*/
     @Autowired
-    private UserDetailsServiceImpl userDetailsService;
+    UserDetailsServiceImpl userDetailsService;
 
     /* Catch authentication errors or exceptions */
     @Autowired
@@ -47,6 +47,7 @@ public class WebSecurityConfig{
 
         return authProvider;
     }
+
     /* Contains DaoAuthenticationProvider  */
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
@@ -58,6 +59,14 @@ public class WebSecurityConfig{
         return new BCryptPasswordEncoder();
     }
 
+
+    /**
+     * Explain: Filter chain - filter all incoming requests
+     *
+     * csrf: Cross Site Request Forgery - Disable like a protected mechanism.
+     *
+     *
+     * */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
@@ -68,11 +77,8 @@ public class WebSecurityConfig{
                                 .requestMatchers("/api/test/**").permitAll()
                                 .anyRequest().authenticated()
                 );
-
         http.authenticationProvider(authenticationProvider());
-
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
-
         return http.build();
     }
 

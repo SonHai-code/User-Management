@@ -22,13 +22,14 @@ import sonhai.project.backendems.repository.UserRepository;
 import sonhai.project.backendems.security.jwt.JwtUtils;
 import sonhai.project.backendems.security.services.UserDetailsImpl;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/api/auth")
 public class AuthController {
     @Autowired
@@ -45,56 +46,56 @@ public class AuthController {
     /**
      * Login User
      */
+
     @PostMapping("/signin")
-    public ResponseEntity<?> authenticateUser(@Valid @RequestBody
-                                                            LoginRequest loginRequest){
-        /**
-         * Create an authentication from request's username and password
-         * - Known as UserDetails Object
-         * */
+    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+
         Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword())
-        );
+                new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtUtils.generateJwtToken(authentication);
 
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-        List<String> roles = userDetails.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList());
+        List<String> roles = new ArrayList<>();
+        for (GrantedAuthority item : userDetails.getAuthorities()) {
+            String authority = item.getAuthority();
+            roles.add(authority);
+        }
 
         return ResponseEntity.ok(new JwtResponse(jwt,
-                                userDetails.getId(),
-                                userDetails.getUsername(),
-                                userDetails.getEmail(),
-                                roles));
+                userDetails.getId(),
+                userDetails.getUsername(),
+                userDetails.getEmail(),
+                roles));
     }
-    @PostMapping("/signup")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signupRequest) {
-        if(userRepository.existsByUsername(signupRequest.getUsername())) {
-            return ResponseEntity
-                    .badRequest()
-                    .body(new MessageResponse("Error: Username is already existed!"))  ;
-        }
-        if (userRepository.existsByEmail(signupRequest.getEmail())) {
-            return ResponseEntity
-                    .badRequest()
-                    .body(new MessageResponse("Error: Email is already in used!"));
-        }
-        /**
-         * Create new user account
-         * */
-        User user = new User(signupRequest.getUsername(),
-                             signupRequest.getEmail(),
-                    encoder.encode(signupRequest.getPassword()));
 
-        // Set role for the user
-        Set<String> strRoles = signupRequest.getRole();
+    @PostMapping("/signup")
+    public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
+        if (userRepository.existsByUsername(signUpRequest.getUsername())) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Username is already taken!"));
+        }
+
+        if (userRepository.existsByEmail(signUpRequest.getEmail())) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Email is already in use!"));
+        }
+
+        // Create new user's account
+        User user = new User(signUpRequest.getUsername(),
+                signUpRequest.getEmail(),
+                encoder.encode(signUpRequest.getPassword()));
+
+        Set<String> strRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();
 
         if (strRoles == null) {
-           Role userRole = roleRepository.findByName(ERole.ROLE_USER)
-                   .orElseThrow(()-> new RuntimeException("Error: Role is not found!"));
-           roles.add(userRole);
+            Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+                    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+            roles.add(userRole);
         } else {
             strRoles.forEach(role -> {
                 switch (role) {
@@ -117,8 +118,10 @@ public class AuthController {
                 }
             });
         }
+
         user.setRoles(roles);
         userRepository.save(user);
-        return ResponseEntity.ok(new MessageResponse("User Registered successfully!"));
+
+        return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
 }
