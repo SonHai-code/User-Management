@@ -20,8 +20,7 @@ import sonhai.project.backendems.security.jwt.AuthTokenFilter;
 import sonhai.project.backendems.security.services.UserDetailsServiceImpl;
 
 @Configuration
-@EnableMethodSecurity(securedEnabled = true, jsr250Enabled = true, prePostEnabled = true)
-
+@EnableMethodSecurity
 public class WebSecurityConfig {
     /* Interface that load user by username and return UserDetails Object*/
     @Autowired

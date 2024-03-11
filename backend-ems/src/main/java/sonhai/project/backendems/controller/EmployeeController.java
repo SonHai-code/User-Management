@@ -20,7 +20,7 @@ public class EmployeeController {
     EmployeeService employeeService;
 
     // ADD employee REST API
-    @PostMapping
+    @PostMapping("/")
     /*
     * Using Annotation @RequestBody because POST Method the client has to send to the server
     * */
